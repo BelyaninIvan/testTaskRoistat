@@ -24,7 +24,7 @@
 
     <label for="userMentor" class="form__label">Выберите начальника:</label>
     <my-select
-      :options="usersList"
+      :options="usersSelectList"
       v-model="selectedItem"
       name="userMentor"
     />
@@ -54,6 +54,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    usersSelectList: {
+      type: Array,
+      default: () => [],
+    }
   },
   data() {
     return {
@@ -71,9 +75,17 @@ export default {
       this.user.id = Date.now();
       if (this.selectedItem != '') {
         this.usersList.forEach(element => {
-          if (element.id == this.selectedItem) {
-            element.children.push(this.user);
-          };
+          if (element.children.length != 0 && element.id != this.selectedItem) {
+            element.children.forEach((childElem) => {
+              if (childElem.id == this.selectedItem) {
+                childElem.children.push(this.user);
+              };
+            });
+          } else {
+            if (element.id == this.selectedItem) {
+              element.children.push(this.user);
+            };
+          }
         });
       } else {
         this.usersList.push(this.user);

@@ -20,6 +20,7 @@
     >
       <add-user-form 
         :users-list="users"
+        :users-select-list="selectUsers"
         @create="createUser"
       />
     </my-dialog>
@@ -44,17 +45,17 @@ export default {
     return {
       users: [
         {
-          id: '1',
+          id: 1,
           name: 'Иван',
           tel: '+79379661986',
           children: [
             {
-              id: '12',
+              id: 12,
               name: 'Иванесунс',
               tel: '+79379661986',
               children: [
               {
-                id: '125',
+                id: 125,
                 name: 'Иванесунсенс',
                 tel: '+79379661986',
                 children: [],
@@ -64,19 +65,57 @@ export default {
           ],
         },
         {
-          id: '2',
+          id: 2,
           name: 'Дмитрий',
           tel: '+79379661986',
           children: [],
         },
         {
-          id: '3',
+          id: 3,
           name: 'Евгений',
           tel: '+79379661986',
           children: [],
         },
         {
-          id: '4',
+          id: 4,
+          name: 'Саша',
+          tel: '+79379661986',
+          children: [],
+        },
+      ],
+      selectUsers: [
+      {
+          id: 1,
+          name: 'Иван',
+          tel: '+79379661986',
+          children: [],
+        },
+        {
+          id: 12,
+          name: 'Иванесунс',
+          tel: '+79379661986',
+          children: [],
+        },
+        {
+          id: 125,
+          name: 'Иванесунсенс',
+          tel: '+79379661986',
+          children: [],
+        },
+        {
+          id: 2,
+          name: 'Дмитрий',
+          tel: '+79379661986',
+          children: [],
+        },
+        {
+          id: 3,
+          name: 'Евгений',
+          tel: '+79379661986',
+          children: [],
+        },
+        {
+          id: 4,
           name: 'Саша',
           tel: '+79379661986',
           children: [],
@@ -89,7 +128,8 @@ export default {
     openDialog() {
       this.dialogVisible = true;
     },
-    createUser() {
+    createUser(user) {
+      this.selectUsers.push(user);
       this.user = '';
       this.dialogVisible = false;
       this.saveUsers();

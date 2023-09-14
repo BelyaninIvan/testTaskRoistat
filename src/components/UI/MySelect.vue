@@ -36,7 +36,7 @@ export default {
   methods: {
     changeOption(event) {
       this.$emit('input', event.target.value);
-    }
+    },
   },
 }
 </script>

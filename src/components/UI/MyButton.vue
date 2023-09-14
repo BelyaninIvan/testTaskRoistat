@@ -27,6 +27,7 @@ export default {
     border-radius: 10px;
     font-weight: 700;
     font-size: 20px;
+    color: white;
     transition: all ease-in 0.7s;
   }
 

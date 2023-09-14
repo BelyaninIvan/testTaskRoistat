@@ -1,17 +1,18 @@
 <template>
-  <option 
+  <option
     :value="optionItem.id"
     class="select__option"
   >
     {{ optionItem.name }}
   </option>
-  <!--<select-option
+    <!-- <select-option
         v-for="chOption in optionItem.children"
         :option-item="chOption"
         :value="chOption.id"
     >
     {{ chOption.name }}
-    </select-option>-->
+    </select-option> -->
+    
 </template>
 <script>
 export default {
@@ -22,7 +23,7 @@ export default {
       default: null,
     },
     value: {
-      type: String,
+      type: Number,
       default: null,
     }
   },
