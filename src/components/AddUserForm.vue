@@ -71,22 +71,19 @@ export default {
     }
   },
   methods: {
+    searchArray(array) {
+      array.forEach(item => {
+        if (item.children.length != 0 && item.id != this.selectedItem) {
+          this.searchArray(item.children);
+        } else if (item.id == this.selectedItem) {
+          item.children.push(this.user);
+        }
+      });
+    },
     createUser() {
       this.user.id = Date.now();
       if (this.selectedItem != '') {
-        this.usersList.forEach(element => {
-          if (element.children.length != 0 && element.id != this.selectedItem) {
-            element.children.forEach((childElem) => {
-              if (childElem.id == this.selectedItem) {
-                childElem.children.push(this.user);
-              };
-            });
-          } else {
-            if (element.id == this.selectedItem) {
-              element.children.push(this.user);
-            };
-          }
-        });
+        this.searchArray(this.usersList)
       } else {
         this.usersList.push(this.user);
       }
